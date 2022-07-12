@@ -1,0 +1,6 @@
+dist: jammy 
+os: linux
+language: generic
+install: skip 
+
+# Test build. 
