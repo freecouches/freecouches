@@ -1,0 +1,4 @@
+notifications:
+  slack:
+    rooms:
+	  - freecouches:UY8dSYMmglSz0QUrdAhkI3nP#eng-feed
