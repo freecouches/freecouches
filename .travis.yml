@@ -1,0 +1,22 @@
+language: ruby
+services:
+- postgresql
+bundler_args: "--jobs=3 --retry=3"
+cache: bundler
+before_install:
+- gem install bundler -v 1.17.3
+- gem install bundler -v 2.0.1
+before_script:
+- psql -c 'create database travis_ci_test;' -U postgres
+- cp config/database.yml.travis config/database.yml
+script:
+- bundle exec rake db:migrate
+deploy:
+  provider: heroku
+  api_key:
+    secure: xFNNc5SudLOhRRDXKqDqZ9pCrmXbX5p/rOBTpc/ZM7OM92TyMHV8unAGz1MtJYjaH/Th4OxBVeJdkdBRti6PeDiLfD38YahzIk12Q5tREgYhLaSoioyudhJeAmTub0SYmLcSjRAGt+eq7U/oJb9p9+r/2HAYtrl44WdhOvrGLYm4Tp9B/dCpX7vTBa2IYuvf2kDVnRMSfArVQVD6WG4AwcHcwzkpocGeZArLeE1tSdMrYK4j6a3ZpXMszeIc4+vxRHpdVR/xSc9CT+ME0ULHWxWk7lj78QsN8O4Z2ri3BysRgfnH+BYcQz4/wqnWCF/9xlVg4H7OImrIBDVQ/6hUvmh33iS+srv8hzB1GI5R0t9MhzRKKORPXx7JyxNy0it3HK8/MOiVD6cfANnW/Ma7unU7Y+QP7ZtBw3YpifuZiislAOCsvvjytGzt9KfINzLtk6UWgj7R8zGiyHNdUVq9Gbb8R8X1JpTSLvJzvS/ha9/3RQzirnBhLAJiNevqb7B/o+mxlXEQIEtoPCfYYIWPydfEJfSDD9G2yNXjgVEYdk5M7cu98YpH5ixDwl5kjh5zbOUhuYvLqbkL+EAWnHI2tz1E1eCw+/K/KFwckY1x42ggYro1KrG58XWDTMm+DQrWAqRRJEOKLtnsF/4pxfw/g/N1IhykFkzvW/YCxnoOTtw=
+    app: freecouches
+    on:
+      branch: travis
+notifications:
+  slack: freecouches:UnCnKQe2hCtTis05Cd8eUjV0
