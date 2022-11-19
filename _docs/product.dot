@@ -4,17 +4,39 @@ digraph unix {
     nodesep=1.25;
 
     //heading
+    fontsize="20pt"
     label="How FreeCouches Builds Product\r\n";
     labelloc="t";
-    fontsize="20pt"
 
     // nodes 
-    company_goals [label="Company\nGoals"] 
-    work [label="Work"]
-    info_arch [label="Information\nArchitecture"] 
-    design [label="Design"] 
-    content [label="Content"] 
-    eng [label="Engineering"] 
+    company_goals [label="Company\nGoals";shape=square;fontsize="18pt"] 
+    subgraph cluster_work {
+        fontsize="18pt"
+        label="Work Planning"
+        roadmap [label="Roadmap"]
+        asana [label="Asana"]
+    }
+    info_arch [label="Information\nArchitecture";shape=square;fontsize="18pt"] 
+
+    subgraph cluster_design {
+        fontsize="18pt"
+        label="Design"
+        figma [label="Figma"] 
+    }
+    
+
+    subgraph cluster_content {
+        fontsize="18pt"
+        label="Content"
+        contentful [label="Contentful"] 
+    }
+    subgraph cluster_eng {
+        fontsize="18pt"
+        label="Engineering"
+        eng [label="Engineering"] 
+    
+    }
+    
     user_product [label="User Facing\nProduct"] 
     marketing [label="Marketing"]
     ux_research [label="UX Research"]
@@ -23,29 +45,29 @@ digraph unix {
 
     // Node placement
     //// vertical node placement
-    {rank=same content; eng};
+    {rank=same contentful; eng};
     {rank=same marketing; data_science};
     {rank=same ux_research; support};
 
     //// horizontal node placement
-    company_goals[group=g1];work[group=g1];info_arch[group=g1];design[group=g1];user_product[group=g1];
+    company_goals[group=g1];asana[group=g1];info_arch[group=g1];figma[group=g1];user_product[group=g1];
 
-    content[group=g2];marketing[group=g2];
+    contentful[group=g2];marketing[group=g2];
     
     eng[group=g3];data_science[group=g3];
 
     // connections
-    company_goals -> work -> info_arch -> design 
-    design->user_product[color=white;dir=none];
+    company_goals -> asana -> info_arch -> figma
+    figma->user_product[color=white;dir=none];
 
-    info_arch -> content
+    info_arch -> contentful
     info_arch -> eng
 
-    design -> content
-    design -> eng
+    figma -> contentful
+    figma -> eng
 
-    content -> user_product
-    content -> marketing
+    contentful -> user_product
+    contentful -> marketing
 
     eng -> user_product
     eng -> data_science
