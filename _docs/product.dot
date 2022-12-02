@@ -2,6 +2,7 @@ digraph unix {
     //overall graph
     rankdir="LR";
     nodesep=1.25;
+    compound=true; 
 
     //heading
     fontsize="20pt"
@@ -9,34 +10,32 @@ digraph unix {
     labelloc="t";
 
     // nodes 
-    company_goals [label="Company\nGoals";shape=square;fontsize="18pt"] 
-    subgraph cluster_work {
-        fontsize="18pt"
-        label="Work Planning"
-        roadmap [label="Roadmap"]
-        asana [label="Asana"]
-    }
-    info_arch [label="Information\nArchitecture";shape=square;fontsize="18pt"] 
 
-    subgraph cluster_design {
-        fontsize="18pt"
-        label="Design"
-        figma [label="Figma"] 
+    subgraph cluster_product_spec {
+        label="Product Spec"
+        
+        info_arch [label="Information\nArchitecture"] 
+        wireframes [label="Wireframes"]
+        tech_spec [label="Tech Spec"]
+        
     }
+
+    
+    wireframes -> mocks [ltail=cluster_product_spec]
+    wireframes -> content [ltail=cluster_product_spec]
+    wireframes -> code [ltail=cluster_product_spec]
+
     
 
-    subgraph cluster_content {
-        fontsize="18pt"
-        label="Content"
-        contentful [label="Contentful"] 
-    }
-    subgraph cluster_eng {
-        fontsize="18pt"
-        label="Engineering"
-        eng [label="Engineering"] 
+    mocks [label="Design Mocks"] 
+
+    code [label="Code"]
+
+    content [label="Content"] 
+
     
-    }
-    
+
+
     user_product [label="User Facing\nProduct"] 
     marketing [label="Marketing"]
     ux_research [label="UX Research"]
@@ -45,36 +44,35 @@ digraph unix {
 
     // Node placement
     //// vertical node placement
-    {rank=same contentful; eng};
     {rank=same marketing; data_science};
     {rank=same ux_research; support};
 
     //// horizontal node placement
-    company_goals[group=g1];asana[group=g1];info_arch[group=g1];figma[group=g1];user_product[group=g1];
-
-    contentful[group=g2];marketing[group=g2];
     
-    eng[group=g3];data_science[group=g3];
+    info_arch[group=g2];content[group=g2];marketing[group=g2];
+    wireframes[group=g1];mocks[group=g1];user_product[group=g1];
+    tech_spec[group=g3];code[group=g3];data_science[group=g3];
 
     // connections
-    company_goals -> asana -> info_arch -> figma
-    figma->user_product[color=white;dir=none];
 
-    info_arch -> contentful
-    info_arch -> eng
+    mocks->user_product[color=white;dir=none];
 
-    figma -> contentful
-    figma -> eng
+    
 
-    contentful -> user_product
-    contentful -> marketing
+    
 
-    eng -> user_product
-    eng -> data_science
+    mocks -> content
+    mocks -> code
 
-    user_product -> marketing [dir="both"];
-    user_product -> ux_research;
-    user_product -> support;
-    user_product -> data_science;
+    content -> user_product
+    content -> marketing
+
+    code -> user_product
+    code -> data_science
+
+    user_product -> marketing;
+    user_product -> ux_research [dir="both"];
+    user_product -> support [dir="both"];
+    user_product -> data_science [dir="both"];
     
 }
