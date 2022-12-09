@@ -1,0 +1,2 @@
+//Anything where we're waiting should have some kinda drip reminder to continya.
+    // Reference reminders in a drip.  See how Couchers does it here:  https://github.com/Couchers-org/couchers/blob/develop/app/backend/src/couchers/jobs/handlers.py#L319

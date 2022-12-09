@@ -1,0 +1,23 @@
+//TODO: indicate how long they can expect to wait between stages.
+// TODO: all the guests step pretty much apply to hosts.  consider that in these flows
+digraph unix {
+    nodesep=1.25;
+    compound=true; 
+    labelloc="t";
+
+    subgraph cluster_host {
+        label="Host Flow - Onboarding and Booking"
+
+        // TODO: determine what edits or cancelations the host can do.  Consider that they could email us also.
+        create_guest_profile
+        waitlist
+        applied
+        rejected
+        phone_interviewed
+        completed_profile_guest
+        guest_2_host_flow
+        completed_profile_host
+        completed_listing
+        dropped_off
+    }
+}

@@ -1,0 +1,32 @@
+//Anything where we're waiting should have some kinda drip reminder to continya.
+
+digraph unix {
+    //overall graph
+    rankdir="LR";
+    nodesep=1.25;
+    compound=true; 
+    labelloc="t";
+
+    home_page [label="Home page"]
+    host_landing_page [label="/host landing page"]
+    guest_application [label="Guest Application"]
+    host_application [label="Host Application"]
+    
+    sendgrid_list_signups
+    streak
+    subgraph_with_fields
+    drips
+    approval_and_rejection_flows
+    guest_2_host
+    identity_checks
+    register_emails
+    availability_when
+    slack_notifs
+    zapier_connector
+
+    notifs_includes_sms
+
+    home_page -> guest_application
+    home_page -> host_application
+    host_landing_page -> host_application
+}

@@ -1,0 +1,91 @@
+// [TODO: map in state_machines.dot into here and guest_flow]
+// [TODO: map out asana stoof into hurr]
+
+
+// QSTN: is guest waitlist/application a thing in the app future? I think it's only a pre-launch feature and everyone else is invite only. 
+    // my thinking is we want to require invites so it kind of dissapears.. hmm
+//QSTN: should we have some form of expiration on invites?  i don't see why.  especially if the code hasn't been used, and the user hasn't been banned.
+
+
+
+//////////////////////////////////////////
+// Verifications and Permissions questions
+//////////////////////////////////////////
+//QSTN: when to allow Search (P2)
+    // TODO: do some competitive analysis
+    // TODO: review how verification works and what steps allowed on Couchsurfing, Couchers, and what you can do at different steps
+        // Check Asana, Docs.  but it should be on Asana competitive analysis.
+
+//TODO: indicate how long they can expect to wait between stages.
+
+digraph unix {
+    nodesep=1.25;
+    compound=true; 
+    labelloc="t";
+
+    label = "Guest Flow - Onboarding and Booking"
+
+    subgraph cluster_golden_guest {
+            label="Product - Guest";
+            p0 [label="Home Page (P0)"] 
+            signup [label="Signup/Apply"]
+            p1 [label="Logged in\nHome Page (P1)"]
+            p2 [label="Search/Filter (P2)"]
+            p3 [label="Listing Page (P3)"]
+            p4 [label="Booking Request (P4)"]
+            actual_stay [label="Actual Stay"]
+            p5 [label="Review (P5)"]
+
+            p0 -> signup -> p1 -> p2 -> p3 -> p4 -> actual_stay -> p5
+    }
+
+    subgraph cluster_booking {
+        label="Booking";
+        // Requested -> pending
+        requested 
+        rejected
+        accepted
+        ongoing 
+        complete //this is separate from accepted on Couchers
+        expired
+        canceled
+        host_reviewed
+        guest_reviewed
+        review_shows_2wks_or_at_mutual
+
+        // TODO: come up with clearer terms for host vs guest cancel
+        // TODO: states for 
+
+        requested->accepted
+        requested->rejected
+        requested->expired
+        requested->canceled
+
+
+        // TODO: TBD if accepted
+        
+    }
+
+
+    subgraph cluster_guest {
+        label="Guest";
+        waitlist
+        registered
+        invite_code
+        email_activated
+        
+        completed_profile
+        
+
+
+
+    }
+
+    subgraph cluster_failure_states {
+        user_banned
+        user_deleted
+        booking_host_rejects
+        booking_guest_cancels        
+
+
+}

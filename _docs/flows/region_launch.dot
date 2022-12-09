@@ -1,0 +1,26 @@
+digraph unix {
+    //overall graph
+    rankdir="LR";
+    nodesep=1.25;
+    compound=true; 
+    labelloc="t";
+
+    label="Region Launching"
+
+    unplanned[label=<Unplanned<br/><FONT POINT-SIZE="12">e.g Shanghai</FONT>>]
+    announced[label=<Announced<br/><FONT POINT-SIZE="12">e.g Austin, soon</FONT>>]
+    hosts_ready[label=<Hosts Ready<br/><FONT POINT-SIZE="12">e.g. 100 approved<br/> Hosts in Austin</FONT>>]
+    launched[label=<Launched<br/><FONT POINT-SIZE="12">e.g. Austin, March 2023</FONT>>]
+    
+
+    unplanned -> announced -> hosts_ready -> launched
+
+    hosting_enabled[label="Hosting Enabled"]
+    launch_party[label="Launch Party"]
+    
+    launched-> hosting_enabled
+    launched -> launch_party
+
+
+
+}
