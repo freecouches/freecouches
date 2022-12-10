@@ -1,0 +1,69 @@
+digraph unix {
+    compound=true; 
+    rankdir="TB"
+    labelloc="t";
+    style="rounded"
+
+    label=<<FONT POINT-SIZE="20">Domain Teams<BR /></FONT>>
+
+    subgraph cluster_infra {
+        label=<<FONT POINT-SIZE="17">Infrastructure</FONT>>
+        color=brown;
+        node[color=brown];
+        
+        // Use invisible nodes to have Infra underneath Product
+        subgraph invis_start {
+            node[style=invis];
+            invisible1
+        }
+        
+        content_infra [label="Content\nInfra"]
+        support [label="Support"]
+        messages_notifs [label="Messages,\nNotifications"]
+        devops [label="Devops"]
+
+        subgraph invis_end {
+            node[style=invis];
+            invisible4
+        }
+    }
+    subgraph cluster_product {
+        label=<<FONT POINT-SIZE="17">Product</FONT>>
+        
+        subgraph cluster_host {
+            color=blue;
+            node[color=blue];
+            label=<<FONT POINT-SIZE="15">Host</FONT>>
+
+            host_tools [label="Host\nTools"]
+            host_growth [label="Host\nGrowth"]
+        }
+
+        subgraph cluster_quality {
+            color=purple;
+            node[color=purple];
+            label=<<FONT POINT-SIZE="15">Quality</FONT>>
+            reviews [label="Reviews"]
+            alterations [label="Booking\nAlterations"]
+            admin_tools [label="Admin\nTools"]
+        }
+        subgraph cluster_guest {
+            color=red;
+            node[color=red];
+            label=<<FONT POINT-SIZE="15">Guest</FONT>>
+            
+            
+            profile [label="Profile"]
+            booking [label="Booking"]
+            guest_growth [label="Guest\nGrowth"]
+        }        
+    }
+    
+    subgraph invis_connects{
+        edge[style=invis];
+
+        guest_growth->invisible4
+        host_tools->invisible1
+    }
+}
+

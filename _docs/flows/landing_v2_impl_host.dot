@@ -1,0 +1,7 @@
+// QSTN: how Streak fits in in the long term for hosts?  Will it just be for managing these pre-launch groups, or it continues as a tool for processing inbound?  I'm not sure we have a need for that at scale?
+
+// Take note of the BS we'll hav to do for waitlist v1 back-compatibility
+
+// Google Maps for location autocomplete
+
+// QSTN: should google form CSV be external source of truth for most dat stuff (not status but their application) prelaunch?  maybe better than approach of storing it all in Streak?

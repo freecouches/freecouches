@@ -1,5 +1,14 @@
 //Anything where we're waiting should have some kinda drip reminder to continya.
     // Reference reminders in a drip.  See how Couchers does it here:  https://github.com/Couchers-org/couchers/blob/develop/app/backend/src/couchers/jobs/handlers.py#L319
+// signing up for us should also trigger contact info entry in sendgrid, like if it was a mailing list subscription.  make sure to include that in diagram.
+// actual application: ensure they read the principles.
+
+
+// NOTE: The Guest and Host Dashboards will show to the user where they are in their onboarding.
+// every step of the booking process with the state machine changing also corresponds to email notifs (This is both a guest and host thing so won't repeat it there)
+// NOTE: Notifs are the unifying concept in the flow (covers both emails) and sms)  just have a certain colored box for notifs
+
+// [MVP decision] it seems logical that rather than using a form, they have a dashboard.  the web could completely represent this state machine, but emails would accompany it
 
 digraph unix {
     compound=true; 

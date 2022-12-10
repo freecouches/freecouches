@@ -1,23 +1,96 @@
+// Interesting NOTE: I beg to differ that talking to the first 100 Hosts and seeding the community with phone-called people isn't a scalable thing persay.. why not? it seems like you always want extra attention to these hosts
+    // the key difference here is that our website isn't launched yet.. people still gonna be waiting..
+
+    // "Region-enabled" is a bit of slight of hand.. 
+    // "Hosts-ready".. well if they can't signup yet are they really ready?  this is diff from when we already have a working app, and its janky until then.  
+
+    // let's explore the nature of the Jank tho.. Specifically, I think it's that they're applying in a different order now than they would through the app..  specifically there is no email verification and they cant edit their listing to see wassup.
+
+// QSTN: From announcement/launch perspective, how long can I really have these Hosts waiting post announcement..
+
+// NOTE that early host applications will be handled in non-scalable way.  We wanna get 100 awesome hosts for Austin that we've talked with on the phone.
+    // Hmm, I'm trying to think how the implementation will change as it gets more scaleable, since Streak doesn't seem ready for getting tons of hosting requests.  Hmmmm
+    // Let's preserve 100 as a magic number
+// Note: We are not asking for every field in the listing on the App.. that would imply we should tell them to edit it after we approve it and prefill it with data.
+
+// TODO: copy over label sizings and conventions from Guest Flow.
+   
+// TODO: Hosts must have Photos of themselves and home.
+    // QSTN: how it fits into the onboarding flow?
+// TODO: Let's go through and make sure we got all the Guest stuff here.
+
+// Note: "Hosts cannot update listings when they are pending approval." . 
+    // QSTN: emm, where does listing entry fit into their application flow, medium and long term?
+
+//QSTN: how does invite code work wrt hosts?  well like guests they wil need an admin invite pre-launch.. but later they'll receive an invite code.
+    // Make sure to note how Regions still matter after a valid Invite code registration
+
+// TODO: age verification has to fit in here somehow
+
+
+
+// QSTN: Ok so compared to Airbnb we just have onne listing.. would it make sense for us to combine host and listing app compared to them then?
+// QSTN: should guest and host profiles be different?  note that this relates to UX of above question.  well, i'm seeing a lot of the questions are the same.
+// QSTN: should host application be its own form separate from that early one to grab their email?
+
 //TODO: indicate how long they can expect to wait between stages.
 // TODO: all the guests step pretty much apply to hosts.  consider that in these flows
+
+ // TODO: Failure states too
+
+// QSTN: we might reject someone as a host but accept them as a guest?  i suppose there are levels to host rejection.
+
+// TODO: Handle the different region cases, thinking long term and then mapping back to what we have now (Austin region or not Austin).
+
+// TODO: determine what edits or cancelations the host can do.  Consider that they could email us also.
+
+// FUTURE: Address verificaton?
+
+// waitlist
+// phone_verified
+// email_activated
+// applied
+// rejected
+// phone_interviewed
+// completed_profile_guest
+// guest_2_host_flow
+// completed_profile_host
+// completed_listing
+// dropped_off
+
+// Note: There is an analogy between throwing an invite-only party and Launching a city.
+// Note: Regions are [circles or polygons?] geofences where hosting is allowed. Part of idea is to build real community and buzz, launching cities one by one as a kind of exclusive thing.
+
 digraph unix {
+    //overall graph
+    rankdir="LR";
     nodesep=1.25;
     compound=true; 
     labelloc="t";
 
-    subgraph cluster_host {
-        label="Host Flow - Onboarding and Booking"
+    label="Host Onboarding and Region Launching Flow"
 
-        // TODO: determine what edits or cancelations the host can do.  Consider that they could email us also.
-        create_guest_profile
-        waitlist
-        applied
-        rejected
-        phone_interviewed
-        completed_profile_guest
-        guest_2_host_flow
-        completed_profile_host
-        completed_listing
-        dropped_off
+    subgraph cluster_hosts {
+        label="Hosts"
+        host_application [label="Host Application"]
     }
+    subgraph cluster_region {
+        label="Regions/Launches"
+    
+        unplanned[label=<Unplanned<br/><FONT POINT-SIZE="12">e.g Shanghai</FONT>>]
+        announced[label=<Announced<br/><FONT POINT-SIZE="12">e.g Austin, <B>December 20th</B></FONT>>]
+        hosts_ready[label=<Hosts Ready<br/><FONT POINT-SIZE="12">e.g. 100 approved<br/> Hosts in Austin</FONT>>]
+        launched[label=<Launched<br/><FONT POINT-SIZE="12">e.g. Austin, March 2023</FONT>>]
+        
+
+        unplanned -> announced -> hosts_ready -> launched
+
+        hosting_enabled[label="Hosting Enabled"]
+        launch_party[label="Launch Party"]
+        
+        launched-> hosting_enabled
+        launched -> launch_party
+    }
+
+    
 }

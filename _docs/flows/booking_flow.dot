@@ -1,0 +1,33 @@
+digraph unix {
+    compound=true; 
+    rankdir="TB"
+    labelloc="t";
+    newrank=true;
+
+    label = <<FONT POINT-SIZE="18">Booking and Reviewing Flow<BR /><BR /></FONT>>    
+    
+    search [label="Guest Searches"]
+    view_listing [label="Guest Views Listing"]
+    request_booking [label="Guest Requests Booking"]
+    request_accepted [label="Host Accepts Request"]
+    actual_booking [label="Actual Booking"]
+    reviews [label="Guest and Host Review"]
+    reviews_on_profile [label="Reviews appear on Profiles"]
+
+    search->view_listing->request_booking
+    request_booking->request_accepted->actual_booking->reviews
+    reviews->reviews_on_profile [label=" 2 wks"]
+
+    {rank=same;reviews;reviews_on_profile}
+    {rank=same;request_booking;table [ shape="square";label = <
+    <table border="0">
+       <tr><td align="text"><FONT POINT-SIZE="16" COLOR="RED">Failure States</FONT></td></tr>
+       <tr><td align="text"><FONT POINT-SIZE="12">• Guest Cancels Request</FONT></td></tr>
+       <tr><td align="text"><FONT POINT-SIZE="12">• Host Rejects Request</FONT></td></tr>
+       <tr><td align="text"><FONT POINT-SIZE="12">• Request Expires</FONT></td></tr>
+       <tr><td align="text"><FONT POINT-SIZE="12">• Host Listing Removed</FONT></td></tr>
+       <tr><td align="text"><FONT POINT-SIZE="12">• Guest or Host No-Shows</FONT></td></tr>
+    </table>
+  > ] }
+
+}

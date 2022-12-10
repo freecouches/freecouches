@@ -1,0 +1,79 @@
+digraph unix {
+    compound=true; 
+    rankdir="TB"
+    labelloc="t";
+    nodesep=.1;
+     label=<<FONT POINT-SIZE="18">Functional Teams<BR /><BR /></FONT>>
+    leadership [label="Leadership"]
+    
+    
+
+    subgraph product_blue {
+        node[color=blue];
+        edge[color=blue];
+
+        product [label="Product"]
+        design [label="Design"]
+        content [label="Content"]
+        eng [label="Eng"]
+        web [label="Web"]
+        native [label="Native"]
+        data_science [label="Data\nScience"]
+        product -> eng
+        product -> design
+        product -> content
+        eng -> data_science 
+        eng->web
+        eng->native
+    }
+
+    subgraph people_red {
+        node [color=red];
+        edge [color=red];
+    
+        people [label="People"]
+        support [label="Support"]
+        host_vetting [label="Host\nVetting"]
+
+        people -> host_vetting
+        people -> support
+    }
+
+    subgraph marketing_purple {
+        node [color=purple];
+        edge [color=purple];
+        marketing [label="Marketing"]
+        launch [label="City\nLaunches"]
+        events [label="Events"]
+        digital_marketing [label="Digital\nMarketing"]
+
+        marketing -> launch
+        marketing -> events
+        marketing -> digital_marketing
+    }
+
+    subgraph biz_green {
+        node [color=green];
+        edge [color=green];
+    
+        biz [label="Biz"]
+        financial [label="Financial"]
+        legal [label="Legal"]
+
+        biz -> financial
+        biz -> legal
+    }
+
+    leadership -> product
+    leadership -> marketing
+    leadership -> people
+    leadership -> biz
+
+    
+
+    
+
+    
+
+    
+}
