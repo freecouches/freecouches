@@ -1,2 +1,27 @@
 //Anything where we're waiting should have some kinda drip reminder to continya.
     // Reference reminders in a drip.  See how Couchers does it here:  https://github.com/Couchers-org/couchers/blob/develop/app/backend/src/couchers/jobs/handlers.py#L319
+
+digraph unix {
+    compound=true; 
+    rankdir="TB"
+    labelloc="t";
+    newrank=true;
+
+    label = <<FONT POINT-SIZE="18">App V1 Implementation</FONT>>    
+
+
+
+    subgraph cluster_golden_guest {
+            label="Product - Guest";
+            p0 [label="Home Page (P0)"] 
+            signup [label="Signup/Apply"]
+            p1 [label="Logged in\nHome Page (P1)"]
+            p2 [label="Search/Filter (P2)"]
+            p3 [label="Listing Page (P3)"]
+            p4 [label="Booking Request (P4)"]
+            actual_stay [label="Actual Stay"]
+            p5 [label="Review (P5)"]
+
+            p0 -> signup -> p1 -> p2 -> p3 -> p4 -> actual_stay -> p5
+    }
+}

@@ -1,12 +1,4 @@
-// [TODO: map in state_machines.dot into here and guest_flow]
 // [TODO: map out asana stoof into hurr]
-
-
-// QSTN: is guest waitlist/application a thing in the app future? I think it's only a pre-launch feature and everyone else is invite only. 
-    // my thinking is we want to require invites so it kind of dissapears.. hmm
-//QSTN: should we have some form of expiration on invites?  i don't see why.  especially if the code hasn't been used, and the user hasn't been banned.
-
-
 
 //////////////////////////////////////////
 // Verifications and Permissions questions
@@ -17,10 +9,6 @@
         // Check Asana, Docs.  but it should be on Asana competitive analysis.
 
 //TODO: indicate how long they can expect to wait between stages.
-
-// There are two levels of launching at play.  There's the launch of the product itself, which we don't yet have a roadmap for because we haven't scoped out points for all dat lol.  I'm not tryna pretend I'll know that oson.
-    // I'd like a less ambiguous word than "Launch" for the app.
-
 digraph unix {
     compound=true; 
     rankdir="TB"
@@ -28,50 +16,6 @@ digraph unix {
     newrank=true;
 
     label = <<FONT POINT-SIZE="18">Guest Flow - Onboarding, Booking, and Reviewing</FONT>>    
-
-
-    // subgraph cluster_golden_guest {
-    //         label="Product - Guest";
-    //         p0 [label="Home Page (P0)"] 
-    //         signup [label="Signup/Apply"]
-    //         p1 [label="Logged in\nHome Page (P1)"]
-    //         p2 [label="Search/Filter (P2)"]
-    //         p3 [label="Listing Page (P3)"]
-    //         p4 [label="Booking Request (P4)"]
-    //         actual_stay [label="Actual Stay"]
-    //         p5 [label="Review (P5)"]
-
-    //         p0 -> signup -> p1 -> p2 -> p3 -> p4 -> actual_stay -> p5
-    // }
-
-    // subgraph cluster_booking {
-    //     label="Booking";
-    //     // Requested -> pending
-    //     requested 
-    //     rejected
-    //     accepted
-    //     ongoing 
-    //     complete //this is separate from accepted on Couchers
-    //     expired
-    //     canceled
-    //     host_reviewed
-    //     guest_reviewed
-    //     review_shows_2wks_or_at_mutual
-
-    //     // TODO: come up with clearer terms for host vs guest cancel
-    //     // TODO: states for 
-
-    //     requested->accepted
-    //     requested->rejected
-    //     requested->expired
-    //     requested->canceled
-
-
-    //     // TODO: TBD if accepted
-        
-    // }
-
-
     
     user_invited [label="User Invite"]
     waitlist_signup [label="Waitlist Signup"]
@@ -109,11 +53,10 @@ digraph unix {
 
     {rank=same;phone_verified;profile_completed;search;view_listing}
 
-
-    
     {rank=same;email_activated;table [ shape="square";label = <
     <table border="0">
        <tr><td align="text"><FONT POINT-SIZE="16" COLOR="RED">Failure States</FONT></td></tr>
+       <tr><td align="text"><FONT POINT-SIZE="12">• Invite Code Already Used</FONT></td></tr>
        <tr><td align="text"><FONT POINT-SIZE="12">• Guest Banned</FONT></td></tr>
        <tr><td align="text"><FONT POINT-SIZE="12">• Guest Closes Account</FONT></td></tr>
        <tr><td align="text"><FONT POINT-SIZE="12">• Guest Cancels Request</FONT></td></tr>
