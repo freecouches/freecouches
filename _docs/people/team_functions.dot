@@ -6,7 +6,6 @@ digraph unix {
      label=<<FONT POINT-SIZE="18">Functional Teams<BR /><BR /></FONT>>
     leadership [label="Leadership"]
     
-    
 
     subgraph product_blue {
         node[color=blue];
@@ -68,12 +67,4 @@ digraph unix {
     leadership -> marketing
     leadership -> people
     leadership -> biz
-
-    
-
-    
-
-    
-
-    
 }

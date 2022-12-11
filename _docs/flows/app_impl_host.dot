@@ -2,3 +2,6 @@
 // Sendgrid should JUST store the basic name and email stuff, I think.  Our first step is to get them into sendgrid
 
 // There are lots of places where the email address lives! including production db later.  may  wanna think abt how these map to each other.  and how they get updated..
+
+// Note: We are not asking for every field in the listing on the App.. that would imply we should tell them to edit it after we approve it and prefill it with data.
+  

@@ -2,6 +2,7 @@
     // Reference reminders in a drip.  See how Couchers does it here:  https://github.com/Couchers-org/couchers/blob/develop/app/backend/src/couchers/jobs/handlers.py#L319
 // signing up for us should also trigger contact info entry in sendgrid, like if it was a mailing list subscription.  make sure to include that in diagram.
 // actual application: ensure they read the principles.
+// QSTN: when would we stop using Streak for the Guest Waitlist?  I think we only use it as a makeshift db until we have a prod db?  But Host Waitlist it continues to be a useful application processing mechanism for picking your top 100 hosts as you launch a city.  And then it continues to collect a waitlist of ppl..
 
 
 // NOTE: The Guest and Host Dashboards will show to the user where they are in their onboarding.

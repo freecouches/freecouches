@@ -2,19 +2,12 @@
 
 // NOTE: Like Airbnb, CS, and Couchers, we don’t require guests to have a profile photo [just hosts].
 
+//TODO: indicate how long they can expect to wait between stages.
+
 //////////////////////////////////////////
 // Verifications and Permissions questions
 //////////////////////////////////////////
-//QSTN: when to allow Search (P2)
-    // TODO: do some competitive analysis
-    // TODO: review how verification works and what steps allowed on Couchsurfing, Couchers, and what you can do at different steps
-        // Check Asana, Docs.  but it should be on Asana competitive analysis.
 
-// TODO: age verification has to fit in here somehow
-    // TODO: competitive analysis on how they verify age on diff sites. checkbox vs birthday?
-// actual application: ensure they read the principles.
-
-//TODO: indicate how long they can expect to wait between stages.
 digraph unix {
     compound=true; 
     rankdir="TB"
