@@ -63,34 +63,52 @@
 
 digraph unix {
     //overall graph
-    rankdir="LR";
-    nodesep=1.25;
-    compound=true; 
+    rankdir="TB";
     labelloc="t";
+    nodesep=0;
 
-    label="Host Onboarding and Region Launching Flow"
+    label=<<FONT POINT-SIZE="22">Host Onboarding and Region Launching Flow</FONT>>
 
     subgraph cluster_hosts {
-        label="Hosts"
+        label=<<FONT POINT-SIZE="18">Hosts</FONT>>
         host_application [label="Host Application"]
+        admin_approve [label="Admin Approves Application"]
+        email_activate [label=<Email Activate<br/><FONT POINT-SIZE="12">(may have already done<br />as a guest)</FONT>>]
+        complete_profile [label="Host Profile\nand\nListing Created"]
+        phone_verify [label=<Phone Verified<br/><FONT POINT-SIZE="12">(may have already done<br />as a guest)</FONT>>]
+        id_verify [label="Identity Verification"]
+        bookable [label="Listing in Search and Bookable"; color=green]
+
+        host_application -> admin_approve -> email_activate -> complete_profile
+        email_activate -> phone_verify
+        phone_verify -> id_verify
+
     }
+    id_verify -> bookable
+    complete_profile -> bookable
+
+    admin_approve -> hosts_ready
+
+    announced -> admin_approve [label="The first 100 hosts\nare phone interviewed";labelloc="b"]
+
     subgraph cluster_region {
-        label="Regions/Launches"
+        label=<<FONT POINT-SIZE="18">Regions/Launches</FONT>>
     
         unplanned[label=<Unplanned<br/><FONT POINT-SIZE="12">e.g Shanghai</FONT>>]
-        announced[label=<Announced<br/><FONT POINT-SIZE="12">e.g Austin, <B>December 20th</B></FONT>>]
-        hosts_ready[label=<Hosts Ready<br/><FONT POINT-SIZE="12">e.g. 100 approved<br/> Hosts in Austin</FONT>>]
-        launched[label=<Launched<br/><FONT POINT-SIZE="12">e.g. Austin, March 2023</FONT>>]
+        announced[label=<Announced<br/><FONT POINT-SIZE="12">e.g Austin<br />December 20th, 2022</FONT>>]
+        hosts_ready[label=<100 Hosts Ready<br/><FONT POINT-SIZE="12">e.g. 100 approved<br/> Hosts in Austin</FONT>>]
+        launched[label=<Hosting Region Launched<br/><FONT POINT-SIZE="12">e.g. Austin, March 2023</FONT>>;color=green]
         
-
         unplanned -> announced -> hosts_ready -> launched
 
-        hosting_enabled[label="Hosting Enabled"]
         launch_party[label="Launch Party"]
         
-        launched-> hosting_enabled
         launched -> launch_party
+        
     }
+
+
+    launched -> bookable
 
     
 }
