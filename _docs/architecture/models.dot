@@ -1,0 +1,7 @@
+// Models, their relations, and their internal fields/state machines.
+
+// Booking Model - State Machine
+    // TODO: map out this note from couchers analysis:
+        // note that certain state transitions are not allowed to the host, e.g. 
+            // "# can't accept a cancelled or confirmed request (only reject), or already accepted", 
+            // "can't reject a cancelled or already rejected request"

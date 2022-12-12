@@ -1,0 +1,54 @@
+// [TODO: map out asana stoof into hurr]
+
+// NOTE: Like Airbnb, CS, and Couchers, we don’t require guests to have a profile photo [just hosts].
+
+//TODO: indicate how long they can expect to wait between stages.
+
+//////////////////////////////////////////
+// Verifications and Permissions questions
+//////////////////////////////////////////
+
+digraph unix {
+    compound=true; 
+    rankdir="TB"
+    labelloc="t";
+    newrank=true;
+
+    label = <<FONT POINT-SIZE="18">Guest Onboarding Flow</FONT>>    
+    
+    user_invited [label="User Invite"]
+    waitlist_signup [label="Waitlist Signup"]
+    admin_invited [label="Admin Invite"]
+    signup [label = "Signup"]
+    email_activated [label ="Email Activated"]
+
+    search [label="Can Search\nand\nView Listings";color=green]
+    phone_verified [label = "Phone Verified"]
+    profile_completed [label ="Guest Profile Completed"]
+    
+
+    waitlist_signup->admin_invited->signup
+    user_invited->signup
+
+    signup->email_activated
+
+    email_activated->search
+    email_activated->phone_verified
+    email_activated->profile_completed
+
+    profile_completed -> request_booking
+    phone_verified -> request_booking
+    request_booking [label="Can Request Bookings";color=green]
+
+    {rank=same;search;phone_verified;profile_completed}
+
+    {rank=same;email_activated;table [ shape="rectangle";label = <
+    <table border="0">
+       <tr><td align="text"><FONT POINT-SIZE="16" COLOR="RED">Failure States</FONT></td></tr>
+       <tr><td align="text"><FONT POINT-SIZE="12">• Invite Code Already Used</FONT></td></tr>
+       <tr><td align="text"><FONT POINT-SIZE="12">• Guest Banned</FONT></td></tr>
+       <tr><td align="text"><FONT POINT-SIZE="12">• Guest Closes Account</FONT></td></tr>
+    </table>
+  > ] }
+
+}

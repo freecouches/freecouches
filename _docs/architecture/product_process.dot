@@ -1,0 +1,78 @@
+digraph unix {
+    //overall graph
+    rankdir="LR";
+    nodesep=1.25;
+    compound=true; 
+
+    //heading
+    fontsize="20pt"
+    label="How FreeCouches Builds Product\r\n";
+    labelloc="t";
+
+    // nodes 
+
+    subgraph cluster_product_spec {
+        label="Product Spec"
+        
+        info_arch [label="Information\nArchitecture"] 
+        wireframes [label="Wireframes"]
+        tech_spec [label="Tech Spec"]
+        
+    }
+
+    
+    wireframes -> mocks [ltail=cluster_product_spec]
+    wireframes -> content [ltail=cluster_product_spec]
+    wireframes -> code [ltail=cluster_product_spec]
+
+    
+
+    mocks [label="Design Mocks"] 
+
+    code [label="Code"]
+
+    content [label="Content"] 
+
+    
+
+
+    user_product [label="User Facing\nProduct"] 
+    marketing [label="Marketing"]
+    ux_research [label="UX Research"]
+    support [label="Support"]
+    data_science [label="Data\nScience"]
+
+    // Node placement
+    //// vertical node placement
+    {rank=same marketing; data_science};
+    {rank=same ux_research; support};
+
+    //// horizontal node placement
+    
+    info_arch[group=g2];content[group=g2];marketing[group=g2];
+    wireframes[group=g1];mocks[group=g1];user_product[group=g1];
+    tech_spec[group=g3];code[group=g3];data_science[group=g3];
+
+    // connections
+
+    mocks->user_product[color=white;dir=none];
+
+    
+
+    
+
+    mocks -> content
+    mocks -> code
+
+    content -> user_product
+    content -> marketing
+
+    code -> user_product
+    code -> data_science
+
+    user_product -> marketing;
+    user_product -> ux_research [dir="both"];
+    user_product -> support [dir="both"];
+    user_product -> data_science [dir="both"];
+    
+}
