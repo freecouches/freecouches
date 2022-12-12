@@ -16,7 +16,7 @@
 
 digraph unix {
     //overall graph
-    rankdir="LR";
+    rankdir="TB";
     labelloc="t";
 
     label=<<FONT POINT-SIZE="22">Host Onboarding and Region Launching Flow</FONT>>
@@ -62,6 +62,15 @@ digraph unix {
 
 
     launched -> bookable
+
+    table [ shape="rectangle";label = <
+    <table border="0">
+       <tr><td align="text"><FONT POINT-SIZE="16" COLOR="RED">Failure States</FONT></td></tr>
+       <tr><td align="text"><FONT POINT-SIZE="12">• Host Rejected</FONT></td></tr>
+       <tr><td align="text"><FONT POINT-SIZE="12">• Host Banned</FONT></td></tr>
+       <tr><td align="text"><FONT POINT-SIZE="12">• Host Closes Account</FONT></td></tr>
+    </table>
+  > ]
 
     
 }
