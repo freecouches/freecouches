@@ -4,4 +4,7 @@ Rails.application.routes.draw do
   # Defines the root path route ("/")
   root to: "application#index"
   # root "articles#index"
+
+  # TODO: remove dis
+  get '/test_email', to: 'application#test_email'
 end
