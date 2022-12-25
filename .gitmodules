@@ -1,0 +1,3 @@
+[submodule "packages/glowy-ui"]
+	path = packages/glowy-ui
+	url = git@github.com:bsgreenb/glowy-ui.git
