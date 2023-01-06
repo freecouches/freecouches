@@ -1,0 +1,3 @@
+# Setup
+
+* Fill out the secret keys in application.yml.  See application.yml.example for the fields.
