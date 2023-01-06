@@ -18,6 +18,9 @@ gem 'sendgrid-ruby'
 # Figaro 12factor env config
 gem "figaro"
 
+# Devise for auth
+gem 'devise'
+
 # Build JSON APIs with ease [https://github.com/rails/jbuilder]
 # gem "jbuilder"
 
