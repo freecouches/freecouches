@@ -1,0 +1,17 @@
+{
+    "name": "couches-schema",
+    "private": true,
+    "description": "FreeCouches Schema",
+    "version": "0.1.0",
+    "author": "Benjamin Greenberg <benjamin@freecouches.org>","dependencies": {
+        "cross-env": "^7.0.3"
+    },
+    "license": "MIT",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/freecouches/freecouches/packages/couches-schema"
+    },
+        "bugs": {
+        "url": "https://github.com/freecouches/freecouches/issues"
+    }
+}
