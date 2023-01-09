@@ -1,0 +1,37 @@
+{
+  "workbench.colorCustomizations": {
+    "inputOption.activeBackground": "#dcc0fd",
+    "tab.activeForeground": "#dcc0fd",
+    "tab.inactiveForeground": "#bbbbbb",
+    "scrollbarSlider.activeBackground": "#dcc0fd",
+    "list.activeSelectionForeground": "#dcc0fd",
+    "list.focusForeground": "#dcc0fd",
+    "titleBar.activeBackground": "#dcc0fd",
+    "titleBar.activeForeground": "#15202b",
+    "menu.selectionForeground": "#dcc0fd",
+    "activityBar.activeBackground": "#520075",
+    "activityBar.activeBorder": "#60a1ff",
+    "activityBar.background": "#520075",
+    "activityBar.foreground": "#15202b",
+    "activityBar.inactiveForeground": "#15202b99",
+    "activityBarBadge.background": "#60a1ff",
+    "activityBarBadge.foreground": "#15202b",
+    "statusBar.background": "#dcc0fd",
+    "statusBar.foreground": "#15202b",
+    "statusBarItem.hoverBackground": "#dcc0fd",
+    "titleBar.inactiveBackground": "#dcc0fd99",
+    "titleBar.inactiveForeground": "#15202b99"
+  },
+  "search.exclude": {
+    "**/.git": true,
+    "**/node_modules": true,
+    "**/bower_components": true,
+    "**/tmp": true,
+    "public": true,
+    "storybook-static": true,
+    "package-lock.json": true
+  },
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "editor.formatOnSave": true,
+  "peacock.color": "#dcc0fd"
+}
