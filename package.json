@@ -14,5 +14,12 @@
     },
     "bugs": {
         "url": "https://github.com/freecouches/freecouches/issues"
+    },
+    "engines": {
+        "node": "18.0.0",
+        "yarn": "1.22.19"
+    },
+    "scripts": {
+        "preinstall":  "git submodule update --init"
     }
 }
