@@ -14,5 +14,8 @@
     },
     "bugs": {
         "url": "https://github.com/freecouches/freecouches/issues"
+    },
+    "scripts": {
+        "preinstall":  "git submodule update --init"
     }
 }
