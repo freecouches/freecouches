@@ -7,19 +7,6 @@ import Seo from "../components/seo"
 
 const IndexPage = () => (
   <Layout>
-    <div>
-      <StaticImage
-        src="../images/couch-square.png"
-        loading="eager"
-        width={64}
-        quality={95}
-        formats={["auto", "webp", "avif"]}
-        alt="Couch Logo"
-      />
-      <h1>
-        Welcome to <b>FreeCouches!</b>
-      </h1>
-    </div>
     <h1>Hello {isLoggedIn() ? getUser().name : "world"}!</h1>
     <p>
       {isLoggedIn() ? (
