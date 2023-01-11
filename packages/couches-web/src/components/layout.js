@@ -8,7 +8,7 @@
 import * as React from "react"
 import { useStaticQuery, graphql } from "gatsby"
 
-import Header from "./header"
+import NavBar from "./nav-bar"
 
 const Layout = ({ children }) => {
   const data = useStaticQuery(graphql`
@@ -22,13 +22,10 @@ const Layout = ({ children }) => {
   `)
 
   return (
-    <>
-      <Header siteTitle={data.site.siteMetadata?.title || `Title`} />
-      <div>
-        <main>{children}</main>
-        <footer>Footer here</footer>
-      </div>
-    </>
+    <div style={{ margin: "20px" }}>
+      <NavBar siteTitle={data.site.siteMetadata?.title || `Title`} />
+      <main>{children}</main>
+    </div>
   )
 }
 
