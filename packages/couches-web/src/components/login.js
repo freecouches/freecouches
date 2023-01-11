@@ -1,43 +1,38 @@
-import React from "react"
+import React, { useState } from "react"
 import { navigate } from "gatsby"
 import { handleLogin, isLoggedIn } from "../services/auth"
 
-class Login extends React.Component {
-  state = {
-    username: ``,
-    password: ``,
-  }
+const Login = () => {
+  const [email, setEmail] = useState(``)
+  const [password, setPassword] = useState(``)
 
-  handleUpdate = event => {
-    this.setState({
-      [event.target.name]: event.target.value,
-    })
-  }
-
-  handleSubmit = event => {
+  const handleSubmit = event => {
     event.preventDefault()
-    handleLogin(this.state)
-  }
-
-  render() {
-    // Redirect to profile if logged in.
-    if (isLoggedIn()) {
+    if (handleLogin({ email, password }) !== false) {
       navigate(`/app/profile`)
     }
+  }
 
+  if (isLoggedIn()) {
+    navigate(`/app/profile`)
+  } else {
     return (
       <>
         <h1>Log in</h1>
         <form
           method="post"
           onSubmit={event => {
-            this.handleSubmit(event)
+            handleSubmit(event)
             navigate(`/app/profile`)
           }}
         >
           <label>
-            Username{` `}
-            <input type="text" name="username" onChange={this.handleUpdate} />
+            Email{` `}
+            <input
+              type="text"
+              name="email"
+              onChange={e => setEmail(e.target.value)}
+            />
           </label>{" "}
           <br />
           <br />
@@ -46,11 +41,11 @@ class Login extends React.Component {
             <input
               type="password"
               name="password"
-              onChange={this.handleUpdate}
+              onChange={e => setPassword(e.target.value)}
             />
           </label>{" "}
           <br /> <br />
-          <input type="submit" value="Log In" />
+          <input type="submit" value="Log In" onClick={e => handleSubmit(e)} />
         </form>
       </>
     )
